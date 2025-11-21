@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator anim;
+    public SkillManager skill {  get; private set; }
     [Header("Move")]
     public float moveSpeed;//ÊµÊ±ÒÆËÙ
 
@@ -63,12 +64,23 @@ public class Player : MonoBehaviour
         rb=GetComponent<Rigidbody2D>();
         anim=GetComponentInChildren<Animator>();
         stateMachine.Initialize(idleState);
+        skill = SkillManager.instance;
     }
 
    
     void Update()
     {
         CheckForDush();
+
+        if (Input.GetKeyDown(KeyCode.Mouse0)&&SkillManager.instance.clone.CanUseSkill())
+        {
+            Vector3 dir = rb.velocity.normalized;
+            float distance = 1.4f;
+
+            Vector3 clonePos = transform.position- dir * distance;
+            
+            SkillManager.instance.clone.CreatClone(clonePos);
+        }
         stateMachine.currentState.Update();
 
     }

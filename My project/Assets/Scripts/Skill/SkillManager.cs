@@ -14,6 +14,8 @@ public class SkillManager : MonoBehaviour
 
     [Header("SkillLock")]
     [SerializeField] public bool canDush = false;
+    [SerializeField] public bool canClone = false;
+
 
     private void Awake()
     {
@@ -35,5 +37,9 @@ public class SkillManager : MonoBehaviour
     public void UnLockDush()
     {
         canDush=true;
+    }
+    public void UnLockClone()
+    {
+        canClone=true;
     }
 }
