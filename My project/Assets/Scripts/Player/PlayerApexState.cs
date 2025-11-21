@@ -36,14 +36,7 @@ public class PlayerApexState : PlayerState
     }
     private void XMOve()
     {
-        if (xInput != 0)
-        {
-            player.moveSpeed = player.maxMoveSpeed * 0.8f * xInput;
-            player.movement = new Vector3(player.moveSpeed, 0, 0);
-        }
-        else
-        {
-            player.movement = Vector3.zero;
-        }
+       //空中控制权,逻辑简单一点，不向地面那样添加水平阻力，不然我感觉手感有点奇怪
+        player.rb.velocity = new Vector3(player.moveSpeed * 0.8f * xInput,0);
     }
 }

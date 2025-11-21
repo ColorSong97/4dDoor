@@ -9,20 +9,14 @@ public class Player : MonoBehaviour
     public Animator anim;
     [Header("Move")]
     public float moveSpeed;//实时移速
-    public float maxMoveSpeed;
-    public float accSpeed;
-    public float anitAccSpeed;
-    public Vector3 movement;//移动向量
 
     [Header("Jump")]
-    public float yMoveSpeed;
-    public Vector3 yMovement;
-    public float yAnitSpeedFactor;//奇妙的小因子
-    public float jumpForce;//瞬时爆发
-    public float gravity;
-    public float maxFallSpeed;//下移恒定比较好操作判断,这里不再使用加速度
+    public float jumpForce;
+    public float downForce;
+    public float coyoteJumpForce;
     public float coyoteJumpDelay;//狼跳组件
     public bool coyoteJudge;
+    public bool canAddCF;
     public bool isReadyToJump;//缓冲跳组件
     public float apexTimeDelay;//悬空组件
 

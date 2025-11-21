@@ -28,15 +28,12 @@ public class PlayerState
     {
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
-        
+        dTime = Time.deltaTime;
     }
     public virtual void Exit() 
     {
         player.anim.SetBool(animBoolName, false);
-        player.movement = Vector3.zero;
-        player.yMovement=Vector3.zero;
-        player.moveSpeed = 0;
-        player.yMoveSpeed = 0;
+
     }
    
 }
