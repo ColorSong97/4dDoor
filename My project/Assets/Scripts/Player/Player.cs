@@ -19,12 +19,15 @@ public class Player : MonoBehaviour
     public bool canAddCF;
     public bool isReadyToJump;//缓冲跳组件
     public float apexTimeDelay;//悬空组件
+    [Header("dush")]
+    public float dushSpeed;
+    public float dushTime;
 
     [Header("Collsion")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckDistence;
     [SerializeField] private LayerMask whatIsGround;
-    public int faceDir;//1是右，-1是左
+    public int faceDir=1;//1是右，-1是左
     [SerializeField] private Transform jumpBufferCheck;
     [SerializeField] private float jumpBufferDistence;
     [SerializeField] private Transform headCheck;
@@ -42,6 +45,8 @@ public class Player : MonoBehaviour
     public PlayerMoveState moveState { get; private set; }
     public PlayerFallState fallState { get; private set; }
     public PlayerApexState apexState { get; private set; }
+    public PlayerDuahState dushState {  get; private set; }
+
     private void Awake()
     {
         stateMachine = new PlayerStateMachine();
@@ -50,6 +55,7 @@ public class Player : MonoBehaviour
         moveState = new PlayerMoveState(this, stateMachine, "move");
         fallState = new PlayerFallState(this, stateMachine, "jump");
         apexState = new PlayerApexState(this, stateMachine, "apex");
+        dushState = new PlayerDuahState(this, stateMachine, "dush");
     }
 
     void Start()
@@ -62,11 +68,18 @@ public class Player : MonoBehaviour
    
     void Update()
     {
-        DieCheck();
+        CheckForDush();
         stateMachine.currentState.Update();
-        
+
     }
-  
+
+    private void CheckForDush()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.dush.CanUseSkill())
+        {
+            stateMachine.ChangeState(dushState);
+        }
+    }
 
 
     public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistence, whatIsGround);

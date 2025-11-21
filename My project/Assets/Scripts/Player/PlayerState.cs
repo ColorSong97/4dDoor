@@ -26,8 +26,12 @@ public class PlayerState
     }
     public virtual void Update()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
+        xInput = Input.GetAxisRaw("Horizontal");      
         yInput = Input.GetAxisRaw("Vertical");
+        if (xInput != 0)
+        {
+            player.faceDir = xInput > 0 ? 1 : -1;
+        }
         dTime = Time.deltaTime;
     }
     public virtual void Exit() 

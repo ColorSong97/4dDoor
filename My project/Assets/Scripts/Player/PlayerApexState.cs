@@ -14,11 +14,13 @@ public class PlayerApexState : PlayerState
     {
         base.Enter();
         apexTimer=player.apexTimeDelay;
+        Debug.Log("ApexEnter");
     }
 
     public override void Exit()
     {
         base.Exit();
+        Debug.Log("ApexQuit");
     }
 
     public override void Update()
