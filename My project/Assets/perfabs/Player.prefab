@@ -61,6 +61,8 @@ MonoBehaviour:
   canAddCF: 0
   isReadyToJump: 0
   apexTimeDelay: 0.06
+  dushSpeed: 0
+  dushTime: 0
   groundCheck: {fileID: 2751801915064408443}
   groundCheckDistence: 0.55
   whatIsGround:

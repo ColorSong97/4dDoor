@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     public PlayerFallState fallState { get; private set; }
     public PlayerApexState apexState { get; private set; }
     public PlayerDuahState dushState {  get; private set; }
+    public PlayerAimDoorState aimState { get; private set; }
 
     private void Awake()
     {
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
         fallState = new PlayerFallState(this, stateMachine, "jump");
         apexState = new PlayerApexState(this, stateMachine, "apex");
         dushState = new PlayerDuahState(this, stateMachine, "dush");
+        aimState = new PlayerAimDoorState(this, stateMachine, "aim");
     }
 
     void Start()
@@ -71,18 +73,22 @@ public class Player : MonoBehaviour
     void Update()
     {
         CheckForDush();
+        CheckForClone();
+        stateMachine.currentState.Update();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0)&&SkillManager.instance.clone.CanUseSkill())
+    }
+
+    private void CheckForClone()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && SkillManager.instance.clone.CanUseSkill())
         {
             Vector3 dir = rb.velocity.normalized;
             float distance = 1.4f;
 
-            Vector3 clonePos = transform.position- dir * distance;
-            
+            Vector3 clonePos = transform.position - dir * distance;
+
             SkillManager.instance.clone.CreatClone(clonePos);
         }
-        stateMachine.currentState.Update();
-
     }
 
     private void CheckForDush()
