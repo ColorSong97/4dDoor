@@ -93,4 +93,8 @@ public class SpaceDoorSkill : Skill
             return true;
         return false;
     }
+    public float ReturnTimer()
+    {
+        return cooldownTimer;
+    }
 }

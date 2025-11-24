@@ -12,7 +12,8 @@ public class PlayerJumpState : PlayerState
     {
         base.Enter();
         Debug.Log("Jump");
-        //AudioManager.Instance.PlaySfx(AudioManager.Instance.jumpSfx);
+
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.jumpSfx);
         if (player.canAddCF)
         {
             player.rb.AddForce(Vector2.up * player.coyoteJumpForce, ForceMode2D.Impulse);

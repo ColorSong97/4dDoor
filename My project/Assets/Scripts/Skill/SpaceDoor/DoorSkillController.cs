@@ -7,6 +7,9 @@ public class DoorSkillController : MonoBehaviour
     private  Animator anim;
     [SerializeField]private GameObject door1, door2;
     private Player player;
+
+    private float Timer;
+    [SerializeField]private float DisAppearTime;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -14,10 +17,17 @@ public class DoorSkillController : MonoBehaviour
     }
     private void Start()
     {
-         
+        Timer = DisAppearTime;
         anim.SetBool("rotate", true);
     }
-
+    protected virtual void Update()
+    {
+        Timer -= Time.deltaTime;
+        if (Timer < 0)
+        {
+            DoorClose();
+        }
+    }
     public void SetupDoor(Vector2 _dir)
     {
         Vector2 dir = _dir.normalized;

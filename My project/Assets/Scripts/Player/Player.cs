@@ -25,8 +25,9 @@ public class Player : MonoBehaviour
     public float dushTime;
 
     [Header("Collsion")]
+    
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundCheckDistence;
+    [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask whatIsGround;
     public int faceDir=1;//1是右，-1是左
     [SerializeField] private Transform jumpBufferCheck;
@@ -82,10 +83,14 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && SkillManager.instance.clone.CanUseSkill())
         {
+            UIManager.instance.cloneCD.OnSkillUse();
+
+
             Vector3 dir = rb.velocity.normalized;
             float distance = 1.4f;
 
             Vector3 clonePos = transform.position - dir * distance;
+
 
             SkillManager.instance.clone.CreatClone(clonePos);
         }
@@ -95,19 +100,19 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.dush.CanUseSkill())
         {
+            UIManager.instance.dashCD.OnSkillUse();
             stateMachine.ChangeState(dushState);
         }
     }
 
 
-    public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistence, whatIsGround);
+    public bool IsGroundDetected() => Physics2D.CircleCast(groundCheck.position,groundCheckRadius, Vector2.down, whatIsGround);
     public bool IsHeadDetected() => Physics2D.Raycast(headCheck.position, Vector2.up, headCheckDistence, whatIsGround);
 
     public bool IsJBAble() => Physics2D.Raycast(jumpBufferCheck.position, Vector2.down, jumpBufferDistence, whatIsGround);
     private void OnDrawGizmos()//根据画线调整一下检测位置，算是工具
     {
-        Gizmos.DrawLine(groundCheck.position,
-            new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistence, groundCheck.position.z));
+        Gizmos.DrawWireSphere(groundCheck.position,groundCheckRadius);
         Gizmos.DrawLine(jumpBufferCheck.position,
             new Vector3(jumpBufferCheck.position.x, jumpBufferCheck.position.y - jumpBufferDistence, jumpBufferCheck.position.z));
         Gizmos.DrawLine(headCheck.position,

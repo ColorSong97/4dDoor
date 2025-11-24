@@ -38,13 +38,16 @@ public class SkillManager : MonoBehaviour
     public void UnLockDush()
     {
         canDush=true;
+        UIManager.instance.SetUIWork(3);
     }
     public void UnLockClone()
     {
         canClone=true;
+        UIManager.instance.SetUIWork(2);
     }
     public void UnLockSpaceDoor()
     {
         canOpenSpaceDoor=true;
+        UIManager.instance.SetUIWork(1);
     }
 }

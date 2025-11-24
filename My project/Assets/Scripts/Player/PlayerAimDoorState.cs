@@ -12,6 +12,7 @@ public class PlayerAimDoorState : PlayerState
     {
         base.Enter();
         player.skill.spaceDoor.DotActive(true);
+        
         Debug.Log("AimEnter");
     }
 
@@ -26,7 +27,9 @@ public class PlayerAimDoorState : PlayerState
         base.Update();
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
+            UIManager.instance.spaceCD.OnSkillUse();
             SkillManager.instance.spaceDoor.CreatDoor();
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.SpaceDoorSkillSfx);
             stateMachine.ChangeState(player.idleState);
         }
     }

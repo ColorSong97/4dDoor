@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door1: {fileID: 7567466010453792767}
   door2: {fileID: 7063457496286032025}
+  DisAppearTime: 4
 --- !u!1001 &5332279210143067982
 PrefabInstance:
   m_ObjectHideFlags: 0
