@@ -37,7 +37,7 @@ public class PlayerJumpState : PlayerState
         player.anim.SetFloat("up_down", player.rb.velocity.y);
         XMOve();
 
-        if (player.IsHeadDetected())//ÅöÍ·ÁË
+        if (player.IsHeadDetected())//ï¿½ï¿½Í·ï¿½ï¿½
         {                       
              stateMachine.ChangeState(player.fallState);
              player.rb.AddForce(Vector2.down*player.downForce,ForceMode2D.Impulse);
@@ -52,7 +52,7 @@ public class PlayerJumpState : PlayerState
 
     private void XMOve()
     {
-       //¿ÕÖÐ¿ØÖÆÈ¨,Âß¼­¼òµ¥Ò»µã£¬²»ÏòµØÃæÄÇÑùÌí¼ÓË®Æ½×èÁ¦£¬²»È»ÎÒ¸Ð¾õÊÖ¸ÐÓÐµãÆæ¹Ö
+       //ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½È¨,ï¿½ß¼ï¿½ï¿½ï¿½Ò»ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë®Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½Ò¸Ð¾ï¿½ï¿½Ö¸ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½
         
        player.rb.velocity = new Vector3(player.moveSpeed * 0.8f* xInput,player.rb.velocity.y);
     }

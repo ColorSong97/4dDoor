@@ -36,4 +36,9 @@ public class PauseUI : MonoBehaviour
         Time.timeScale = isOpen ? 0f : 1f;
         pauseUI.SetActive(isOpen);
     }
+
+    public void ReturnToMainMenu()
+    {
+        ScenceManager.instance.myLoadScence(0);
+    }
 }

@@ -9,17 +9,17 @@ public class Player : MonoBehaviour
     public Animator anim;
     public SkillManager skill {  get; private set; }
     [Header("Move")]
-    public float moveSpeed;//ÊµÊ±ÒÆËÙ
+    public float moveSpeed;//ÊµÊ±ï¿½ï¿½ï¿½ï¿½
 
     [Header("Jump")]
     public float jumpForce;
     public float downForce;
     public float coyoteJumpForce;
-    public float coyoteJumpDelay;//ÀÇÌø×é¼þ
+    public float coyoteJumpDelay;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public bool coyoteJudge;
     public bool canAddCF;
-    public bool isReadyToJump;//»º³åÌø×é¼þ
-    public float apexTimeDelay;//Ðü¿Õ×é¼þ
+    public bool isReadyToJump;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public float apexTimeDelay;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     [Header("dush")]
     public float dushSpeed;
     public float dushTime;
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask whatIsGround;
-    public int faceDir=1;//1ÊÇÓÒ£¬-1ÊÇ×ó
+    public int faceDir=1;//1ï¿½ï¿½ï¿½Ò£ï¿½-1ï¿½ï¿½ï¿½ï¿½
     [SerializeField] private Transform jumpBufferCheck;
     [SerializeField] private float jumpBufferDistence;
     [SerializeField] private Transform headCheck;
@@ -106,11 +106,11 @@ public class Player : MonoBehaviour
     }
 
 
-    public bool IsGroundDetected() => Physics2D.CircleCast(groundCheck.position,groundCheckRadius, Vector2.down, whatIsGround);
+    public bool IsGroundDetected() => Physics2D.CircleCast(groundCheck.position,groundCheckRadius, Vector2.down, 0, whatIsGround);
     public bool IsHeadDetected() => Physics2D.Raycast(headCheck.position, Vector2.up, headCheckDistence, whatIsGround);
 
     public bool IsJBAble() => Physics2D.Raycast(jumpBufferCheck.position, Vector2.down, jumpBufferDistence, whatIsGround);
-    private void OnDrawGizmos()//¸ù¾Ý»­Ïßµ÷ÕûÒ»ÏÂ¼ì²âÎ»ÖÃ£¬ËãÊÇ¹¤¾ß
+    private void OnDrawGizmos()//ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ßµï¿½ï¿½ï¿½Ò»ï¿½Â¼ï¿½ï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½Ç¹ï¿½ï¿½ï¿½
     {
         Gizmos.DrawWireSphere(groundCheck.position,groundCheckRadius);
         Gizmos.DrawLine(jumpBufferCheck.position,
@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
     {
        
         yield return new WaitForSeconds(seconds);
-        //Ã»ÓÐgameManager£¬ÕâÀïÏÈ×¢ÊÍµô£¬¶øÇÒËÀÍöÅÐ¶¨Ò²µÃ¸Ä
+        //Ã»ï¿½ï¿½gameManagerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Ò²ï¿½Ã¸ï¿½
         //GameManager.Instance.ReLoad();
         //GameManager.Instance.DeadAdd();
     }

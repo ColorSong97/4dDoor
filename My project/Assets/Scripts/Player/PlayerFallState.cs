@@ -20,7 +20,7 @@ public class PlayerFallState : PlayerState
     {
         base.Exit();
         player.anim.SetFloat("up_down",0);
-        player.coyoteJudge = false;//ÏÂÂä½áÊø£¬°ÑÕâ¸ö²ÎÊý¸ÄÁË
+        player.coyoteJudge = false;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Debug.Log("fallQuit");
     }
 
@@ -38,7 +38,7 @@ public class PlayerFallState : PlayerState
 
         if (player.IsGroundDetected())
         {
-            //AudioManager.Instance.PlaySfx(AudioManager.Instance.fallLandSfx);
+            // AudioManager.Instance.PlaySfx(AudioManager.Instance.fallLandSfx);
             if (xInput == 0)
                 stateMachine.ChangeState(player.idleState);
             else
@@ -52,7 +52,7 @@ public class PlayerFallState : PlayerState
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (coyoteJumpTimer >= 0 && player.coyoteJudge)//ÀÇÌø
+            if (coyoteJumpTimer >= 0 && player.coyoteJudge)//ï¿½ï¿½ï¿½ï¿½
             {
                 player.canAddCF = true;
                 stateMachine.ChangeState(player.jumpState);
@@ -60,7 +60,7 @@ public class PlayerFallState : PlayerState
             }
             if (player.IsJBAble())
             {
-                player.isReadyToJump = true;//Èç¹û²»ÊÇÀÇÌø£¬ÕâÀïÔ¤±¸ÏÂÂä»º³åÆðÌø   
+                player.isReadyToJump = true;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ä»ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½   
             }
         }
         return false;
@@ -68,7 +68,7 @@ public class PlayerFallState : PlayerState
 
     private void XMOve()
     {
-       //¿ÕÖÐ¿ØÖÆÈ¨,Âß¼­¼òµ¥Ò»µã£¬²»ÏòµØÃæÄÇÑùÌí¼ÓË®Æ½×èÁ¦£¬²»È»ÎÒ¸Ð¾õÊÖ¸ÐÓÐµãÆæ¹Ö
+       //ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½È¨,ï¿½ß¼ï¿½ï¿½ï¿½Ò»ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë®Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½Ò¸Ð¾ï¿½ï¿½Ö¸ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½
         
        player.rb.velocity = new Vector3(player.moveSpeed * 0.8f * xInput, player.rb.velocity.y);        
 
