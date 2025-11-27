@@ -39,6 +39,13 @@ public class SavingManager : MonoBehaviour
         gameData = new GameData();
     }
 
+    [ContextMenu("Delete Saved File")]
+    public void ClearSavedData()
+    {
+        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        dataHandler.Delete();
+    }
+
     public void LoadGame()
     {
         gameData = dataHandler.Load();

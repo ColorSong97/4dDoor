@@ -69,4 +69,14 @@ public class FileDataHandler
         
         return loadData;
     }
+
+    public void Delete()
+    {
+        string fullPath = Path.Combine(this.dataDirPath, this.dataFileName);
+
+        if (File.Exists(fullPath))
+        {
+            File.Delete(fullPath);
+        }
+    }
 }

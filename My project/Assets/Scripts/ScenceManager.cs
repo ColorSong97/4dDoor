@@ -26,4 +26,8 @@ public class ScenceManager : MonoBehaviour
         AudioManager.Instance.PlaySfx(AudioManager.Instance.buttonClickSfx);
     }
 
+    public void myDeleteData()
+    {
+        SavingManager.instance.ClearSavedData();
+    }
 }
