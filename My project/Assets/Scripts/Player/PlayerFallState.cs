@@ -36,7 +36,7 @@ public class PlayerFallState : PlayerState
             return;
         }
         
-        XMOve();
+        XMove();
 
         if (player.IsGroundDetected())
         {
@@ -52,7 +52,7 @@ public class PlayerFallState : PlayerState
 
     private bool CoyoteJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (player.isJumpPressed)
         {
             if (coyoteJumpTimer >= 0 && player.coyoteJudge)//����
             {
@@ -68,7 +68,7 @@ public class PlayerFallState : PlayerState
         return false;
     }
 
-    private void XMOve()
+    private void XMove()
     {
        //���п���Ȩ,�߼���һ�㣬��������������ˮƽ��������Ȼ�Ҹо��ָ��е����
         

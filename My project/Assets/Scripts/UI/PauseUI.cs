@@ -39,6 +39,6 @@ public class PauseUI : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        ScenceManager.instance.myLoadScence(0);
+        SceneManager.instance.myMenuScene();
     }
 }

@@ -25,11 +25,13 @@ public class PlayerAimDoorState : PlayerState
     public override void Update()
     {
         base.Update();
-        if (Input.GetKeyUp(KeyCode.Mouse1))
+        
+        if (player.isAimReleased)
         {
             UIManager.instance.spaceCD.OnSkillUse();
             SkillManager.instance.spaceDoor.CreatDoor();
             AudioManager.Instance.PlaySfx(AudioManager.Instance.SpaceDoorSkillSfx);
+            
             stateMachine.ChangeState(player.idleState);
         }
     }

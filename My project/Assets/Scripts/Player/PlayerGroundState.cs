@@ -28,12 +28,12 @@ public class PlayerGroundState : PlayerState
             stateMachine.ChangeState(player.jumpState);
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1)&&SkillManager.instance.spaceDoor.CanUseSkill()) {
+        if (player.isAimPressed && SkillManager.instance.spaceDoor.CanUseSkill()) {
             stateMachine.ChangeState(player.aimState);
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)&&player.IsGroundDetected())
+        if (player.isJumpPressed && player.IsGroundDetected())
         {
             stateMachine.ChangeState(player.jumpState);
             return;

@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
 
     public void BackToMain()
     {
-        ScenceManager.instance.myLoadScence(0);
+        SceneManager.instance.myMenuScene();
     }
 
 

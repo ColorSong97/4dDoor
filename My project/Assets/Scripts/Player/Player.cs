@@ -41,13 +41,24 @@ public class Player : MonoBehaviour
     public float DeathDelay;
     public bool isBusy;
 
+    #region Inputs
+
+    public int moveVector;
+    public bool isJumpPressed;
+    public bool isDashPressed;
+    public bool isClonePressed;
+    public bool isAimPressed;
+    public bool isAimReleased;
+
+    #endregion
+
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState {  get; private set; }
     public PlayerJumpState jumpState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
     public PlayerFallState fallState { get; private set; }
     public PlayerApexState apexState { get; private set; }
-    public PlayerDuahState dushState {  get; private set; }
+    public PlayerDashState dashState {  get; private set; }
     public PlayerAimDoorState aimState { get; private set; }
 
     private void Awake()
@@ -58,7 +69,7 @@ public class Player : MonoBehaviour
         moveState = new PlayerMoveState(this, stateMachine, "move");
         fallState = new PlayerFallState(this, stateMachine, "jump");
         apexState = new PlayerApexState(this, stateMachine, "apex");
-        dushState = new PlayerDuahState(this, stateMachine, "dush");
+        dashState = new PlayerDashState(this, stateMachine, "dash");
         aimState = new PlayerAimDoorState(this, stateMachine, "aim");
     }
 
@@ -73,7 +84,7 @@ public class Player : MonoBehaviour
    
     void Update()
     {
-        CheckForDush();
+        CheckForDash();
         CheckForClone();
         stateMachine.currentState.Update();
 
@@ -81,7 +92,7 @@ public class Player : MonoBehaviour
 
     private void CheckForClone()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && SkillManager.instance.clone.CanUseSkill())
+        if (isClonePressed && SkillManager.instance.clone.CanUseSkill())
         {
             UIManager.instance.cloneCD.OnSkillUse();
 
@@ -96,12 +107,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void CheckForDush()
+    private void CheckForDash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.dush.CanUseSkill())
+        if (isDashPressed && SkillManager.instance.dush.CanUseSkill())
         {
             UIManager.instance.dashCD.OnSkillUse();
-            stateMachine.ChangeState(dushState);
+            stateMachine.ChangeState(dashState);
         }
     }
 
@@ -135,4 +146,40 @@ public class Player : MonoBehaviour
             return;
         }
     }
+
+    #region InputCheck
+
+    public void InputMove(int _moveVector)
+    {
+        this.moveVector = _moveVector;
+        // if (_moveVector != 0)
+        //     Debug.Log(_moveVector);
+    }
+
+    public void InputJump(bool _isJumpPressed)
+    {
+        this.isJumpPressed = _isJumpPressed;
+    }
+
+    public void InputDash(bool _isDashPressed)
+    {
+        this.isDashPressed = _isDashPressed;
+    }
+
+    public void InputClone(bool _isClonePressed)
+    {
+        this.isClonePressed = _isClonePressed;
+    }
+
+    public void InputAim(bool _isAimPressed)
+    {
+        this.isAimPressed = _isAimPressed;
+    }
+
+    public void InputAimReleased(bool _isAimReleased)
+    {
+        this.isAimReleased = _isAimReleased;
+    }
+
+    #endregion
 }

@@ -24,9 +24,10 @@ public class PlayerMoveState : PlayerGroundState
     public override void Update()
     {
         base.Update();
+        
         player.rb.velocity = new Vector2(player.moveSpeed * xInput, player.rb.velocity.y);
+        
         if (xInput == 0)
             stateMachine.ChangeState(player.idleState);
-
     }
 }

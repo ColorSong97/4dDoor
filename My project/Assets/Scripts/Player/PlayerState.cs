@@ -26,8 +26,8 @@ public class PlayerState
     }
     public virtual void Update()
     {
-        xInput = Input.GetAxisRaw("Horizontal");      
-        yInput = Input.GetAxisRaw("Vertical");
+        xInput = player.moveVector;
+        yInput = 0;
         if (xInput != 0)
         {
             player.faceDir = xInput > 0 ? 1 : -1;

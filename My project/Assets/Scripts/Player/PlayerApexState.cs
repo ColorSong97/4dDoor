@@ -27,6 +27,7 @@ public class PlayerApexState : PlayerState
     public override void Update()
     {
         base.Update();
+        
         apexTimer -= dTime;
         if (apexTimer > 0) {
             XMOve();
@@ -39,7 +40,6 @@ public class PlayerApexState : PlayerState
     }
     private void XMOve()
     {
-       //���п���Ȩ,�߼���һ�㣬��������������ˮƽ��������Ȼ�Ҹо��ָ��е����
         player.rb.velocity = new Vector3(player.moveSpeed * 0.8f * xInput,0);
     }
 }

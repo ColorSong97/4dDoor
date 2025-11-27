@@ -76,7 +76,7 @@ public class SkillManager : MonoBehaviour, ISavingManager
 
     public void SaveData(ref GameData _data)
     {
-        _data.inventory.Clear();
+        // _data.inventory.Clear();
         
         // use [key] method, autoly cover if key exited
         _data.inventory["canDash"] = canDash ? 1 : 0;
