@@ -17,6 +17,7 @@ public class FileDataHandler
 
     public void Save(GameData _data)
     {
+        _data.PrintSelf();
         string fullPath = Path.Combine(this.dataDirPath, this.dataFileName);
 
         try

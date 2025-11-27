@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//ÖÍ¿Õ×´Ì¬£¬ÔöÇ¿²Ù×÷ÐÔ
+//ï¿½Í¿ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public class PlayerApexState : PlayerState
 {
     public PlayerApexState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
@@ -13,14 +13,15 @@ public class PlayerApexState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        // Debug.Log("ApexEnter");
+        
         apexTimer=player.apexTimeDelay;
-        Debug.Log("ApexEnter");
     }
 
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("ApexQuit");
+        // Debug.Log("ApexQuit");
     }
 
     public override void Update()
@@ -38,7 +39,7 @@ public class PlayerApexState : PlayerState
     }
     private void XMOve()
     {
-       //¿ÕÖÐ¿ØÖÆÈ¨,Âß¼­¼òµ¥Ò»µã£¬²»ÏòµØÃæÄÇÑùÌí¼ÓË®Æ½×èÁ¦£¬²»È»ÎÒ¸Ð¾õÊÖ¸ÐÓÐµãÆæ¹Ö
+       //ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½È¨,ï¿½ß¼ï¿½ï¿½ï¿½Ò»ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë®Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½Ò¸Ð¾ï¿½ï¿½Ö¸ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½
         player.rb.velocity = new Vector3(player.moveSpeed * 0.8f * xInput,0);
     }
 }

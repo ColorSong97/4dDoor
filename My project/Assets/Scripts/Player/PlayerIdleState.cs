@@ -12,14 +12,15 @@ public class PlayerIdleState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+        // Debug.Log("idle");
+        
         player.rb.velocity = Vector2.zero;
-        Debug.Log("idle");
     }
 
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("idleQuit");
+        // Debug.Log("idleQuit");
     }
 
     public override void Update()

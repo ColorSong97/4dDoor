@@ -12,16 +12,16 @@ public class PlayerDuahState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        // Debug.Log("DushEnter");
+        
         AudioManager.Instance.PlaySfx(AudioManager.Instance.DashSfx);
         Timer=player.dushTime;
-        Debug.Log("DushEnter");
-        
     }
 
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("DushQUit");
+        // Debug.Log("DushQUit");
     }
 
     public override void Update()

@@ -11,7 +11,7 @@ public class PlayerJumpState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Jump");
+        // Debug.Log("Jump");
 
         AudioManager.Instance.PlaySfx(AudioManager.Instance.jumpSfx);
         if (player.canAddCF)
@@ -26,9 +26,10 @@ public class PlayerJumpState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        // Debug.Log("jump Quit");
+        
         player.canAddCF = false;
         player.anim.SetFloat("up_down",0);
-        Debug.Log("jump Quit");
     }
 
     public override void Update()

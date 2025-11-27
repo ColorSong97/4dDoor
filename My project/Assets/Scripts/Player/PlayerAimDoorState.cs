@@ -11,15 +11,15 @@ public class PlayerAimDoorState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        player.skill.spaceDoor.DotActive(true);
+        // Debug.Log("AimEnter");
         
-        Debug.Log("AimEnter");
+        player.skill.spaceDoor.DotActive(true);
     }
 
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("aimQuit");
+        // Debug.Log("aimQuit");
     }
 
     public override void Update()

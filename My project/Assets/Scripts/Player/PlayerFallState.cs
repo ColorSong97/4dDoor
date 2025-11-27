@@ -12,16 +12,18 @@ public class PlayerFallState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        // Debug.Log("fall");
+        
         coyoteJumpTimer = player.coyoteJumpDelay;
-        Debug.Log("fall");
     }
 
     public override void Exit()
     {
         base.Exit();
+        // Debug.Log("fallQuit");
+        
         player.anim.SetFloat("up_down",0);
         player.coyoteJudge = false;//����������������������
-        Debug.Log("fallQuit");
     }
 
     public override void Update()

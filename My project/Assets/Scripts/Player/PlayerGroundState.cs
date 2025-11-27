@@ -11,19 +11,20 @@ public class PlayerGroundState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Ground");
+        // Debug.Log("Ground");
     }
 
     public override void Exit()
     {
         base.Exit();
-        player.isReadyToJump = false;//ÍÑÀëµØÃæºó¾ÍÖØÖÃ¡°ÖÍ¿ÕÌø¡±µÄ»º³å
-        Debug.Log("Ground Quit");
+        // Debug.Log("Ground Quit");
+        
+        player.isReadyToJump = false;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
     }
     public override void Update()
     {
         base.Update();
-        if (player.isReadyToJump) {//»º³å´¥·¢
+        if (player.isReadyToJump) {//ï¿½ï¿½ï¿½å´¥ï¿½ï¿½
             stateMachine.ChangeState(player.jumpState);
             return;
         }
@@ -39,7 +40,7 @@ public class PlayerGroundState : PlayerState
         }
         if (!player.IsGroundDetected())
         {
-            player.coyoteJudge = true;//Àë¿ªµØÃæ¿ÕÖĞÆğÌø²»Í¬ÓÚÌøÔ¾ºóÏÂÂäÆğÌø
+            player.coyoteJudge = true;//ï¿½ë¿ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½Ô¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             stateMachine.ChangeState(player.fallState);
             return;
         }

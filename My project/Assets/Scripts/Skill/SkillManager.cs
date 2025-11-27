@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillManager : MonoBehaviour
+public class SkillManager : MonoBehaviour, ISavingManager
 {
     public static SkillManager instance;
 
@@ -13,7 +13,7 @@ public class SkillManager : MonoBehaviour
 
 
     [Header("SkillLock")]
-    [SerializeField] public bool canDush = false;
+    [SerializeField] public bool canDash = false;
     [SerializeField] public bool canClone = false;
     [SerializeField] public bool canOpenSpaceDoor = false;
 
@@ -37,7 +37,7 @@ public class SkillManager : MonoBehaviour
     }
     public void UnLockDush()
     {
-        canDush=true;
+        canDash=true;
         UIManager.instance.SetUIWork(3);
     }
     public void UnLockClone()
@@ -49,5 +49,42 @@ public class SkillManager : MonoBehaviour
     {
         canOpenSpaceDoor=true;
         UIManager.instance.SetUIWork(1);
+    }
+
+    
+    public void LoadData(GameData _data)
+    {
+        foreach (KeyValuePair<string,int> pair in _data.inventory)
+        {
+            if (pair.Key == "canDash" && pair.Value == 1)
+            {
+                SkillManager.instance.UnLockDush();
+                // Debug.Log("dash loaded " + pair.Key + " : " + pair.Value);
+            }
+            if (pair.Key == "canClone" && pair.Value == 1)
+            {
+                SkillManager.instance.UnLockClone();
+                // Debug.Log("clone loaded " + pair.Key + " : " + pair.Value);
+            }
+            if (pair.Key == "canOpenSpaceDoor" && pair.Value == 1)
+            {
+                SkillManager.instance.UnLockSpaceDoor();
+                // Debug.Log("open space door loaded " + pair.Key + " : " + pair.Value);
+            }
+        }
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.inventory.Clear();
+        
+        // use [key] method, autoly cover if key exited
+        _data.inventory["canDash"] = canDash ? 1 : 0;
+        _data.inventory["canClone"] = canClone ? 1 : 0;
+        _data.inventory["canOpenSpaceDoor"] = canOpenSpaceDoor ? 1 : 0;
+    
+        // Debug.Log($"dash saved: {_data.inventory["canDash"]}");
+        // Debug.Log($"clone saved: {_data.inventory["canClone"]}");
+        // Debug.Log($"open space door saved: {_data.inventory["canOpenSpaceDoor"]}");
     }
 }

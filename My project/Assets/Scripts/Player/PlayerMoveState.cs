@@ -12,13 +12,13 @@ public class PlayerMoveState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("move");
+        // Debug.Log("move");
     }
 
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("move Quit");
+        // Debug.Log("move Quit");
     }
 
     public override void Update()

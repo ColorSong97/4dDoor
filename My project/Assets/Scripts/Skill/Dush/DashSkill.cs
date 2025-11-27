@@ -7,7 +7,7 @@ public class DashSkill : Skill
     public override bool CanUseSkill()
     {
 
-        if (SkillManager.instance.canDush && base.CanUseSkill())
+        if (SkillManager.instance.canDash && base.CanUseSkill())
             return true;
         return false;
     }
