@@ -11,7 +11,6 @@ public class SceneChangingArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("scene changing area entered");
         if (collision.gameObject.tag == "Player")
         {
             SceneManager.instance.myLoadScene(nextRoom, transportPosition);

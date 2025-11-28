@@ -43,6 +43,16 @@ public class SceneManager : MonoBehaviour, ISavingManager
 
     public void myLoadScene(int levelIndex, Vector2 position)
     {
+        if (levelIndex == currentScene)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(levelIndex);
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.buttonClickSfx);
+            PlayerManager.instance.player.transform.position = new Vector3(position.x, position.y, 0);
+            PlayerManager.instance.setUnmoveableTimer(0.5f);
+            PlayerManager.instance.player.stateMachine.ChangeState(PlayerManager.instance.player.changeSceneState);
+            PlayerManager.instance.currency = 0;
+            return;
+        }
         StartCoroutine(LoadSceneCoroutine(levelIndex, position));
     }
 
@@ -52,7 +62,7 @@ public class SceneManager : MonoBehaviour, ISavingManager
     
         // load the scene one by one
         AsyncOperation asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(levelIndex);
-    
+        
         // wait for the scene fully loaded
         while (!asyncLoad.isDone)
         {
@@ -64,17 +74,11 @@ public class SceneManager : MonoBehaviour, ISavingManager
     
         // now can safely set the player
         PlayerManager.instance.player.transform.position = new Vector3(position.x, position.y, 0);
-        PlayerManager.instance.setUnmoveableTimer(0.1f);
+        PlayerManager.instance.setUnmoveableTimer(0.5f);
     
         // set player's state due to grounded state
-        if (PlayerManager.instance.player.IsGroundDetected())
-        {
-            PlayerManager.instance.player.stateMachine.ChangeState(PlayerManager.instance.player.idleState);
-        }
-        else
-        {
-            PlayerManager.instance.player.stateMachine.ChangeState(PlayerManager.instance.player.idleState);
-        }
+        PlayerManager.instance.player.stateMachine.ChangeState(PlayerManager.instance.player.changeSceneState);
+        PlayerManager.instance.currency = 0;
     
         // change current scene index
         currentScene = levelIndex;

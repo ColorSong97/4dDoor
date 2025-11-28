@@ -35,6 +35,13 @@ public class PlayerManager : MonoBehaviour, ISavingManager
     public void setUnmoveableTimer(float timer)
     {
         unmoveableTimer = timer;
+        
+        player.InputMove(0);
+        player.InputJump(false);
+        player.InputDash(false);
+        player.InputClone(false);
+        player.InputAim(false);
+        player.InputAimReleased(false);
     }
 
     public void MyInput()
@@ -84,6 +91,8 @@ public class PlayerManager : MonoBehaviour, ISavingManager
 
     public void SaveData(ref GameData _data)
     {
-        _data.currency = this.currency;
+        // _data.inventory.Clear();
+        
+        // _data.currency = this.currency;
     }
 }

@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    #region State
+    
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState {  get; private set; }
     public PlayerJumpState jumpState { get; private set; }
@@ -60,6 +62,9 @@ public class Player : MonoBehaviour
     public PlayerApexState apexState { get; private set; }
     public PlayerDashState dashState {  get; private set; }
     public PlayerAimDoorState aimState { get; private set; }
+    public PlayerChangeSceneState changeSceneState { get; private set; }
+    
+    #endregion
 
     private void Awake()
     {
@@ -71,6 +76,7 @@ public class Player : MonoBehaviour
         apexState = new PlayerApexState(this, stateMachine, "apex");
         dashState = new PlayerDashState(this, stateMachine, "dash");
         aimState = new PlayerAimDoorState(this, stateMachine, "aim");
+        changeSceneState = new PlayerChangeSceneState(this, stateMachine, "idle");
     }
 
     void Start()
@@ -109,7 +115,7 @@ public class Player : MonoBehaviour
 
     private void CheckForDash()
     {
-        if (isDashPressed && SkillManager.instance.dush.CanUseSkill())
+        if (isDashPressed && SkillManager.instance.dash.CanUseSkill())
         {
             UIManager.instance.dashCD.OnSkillUse();
             stateMachine.ChangeState(dashState);

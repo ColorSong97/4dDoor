@@ -7,7 +7,7 @@ public class PlayerFallState : PlayerState
     public PlayerFallState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
     }
-    float coyoteJumpTimer;
+    public float coyoteJumpTimer;
     
     public override void Enter()
     {

@@ -12,10 +12,11 @@ public class PlayerStateMachine
         currentState.Enter();
     }
   
-    public void ChangeState(PlayerState _newstate)
+    public bool ChangeState(PlayerState _newstate)
     {
         currentState.Exit();
         currentState = _newstate;
         currentState.Enter();
+        return true;
     }
 }

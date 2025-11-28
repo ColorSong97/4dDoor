@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -65,6 +66,8 @@ public class SavingManager : MonoBehaviour
     public void SaveGame()
     {
         // data handler save gameData
+        gameData.inventory.Clear();
+        
         foreach (ISavingManager savingManager in savingManagers)
         {
             savingManager.SaveData(ref gameData);

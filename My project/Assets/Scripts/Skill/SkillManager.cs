@@ -6,7 +6,7 @@ public class SkillManager : MonoBehaviour, ISavingManager
 {
     public static SkillManager instance;
 
-    public DashSkill dush { get; private set; }
+    public DashSkill dash { get; private set; }
     public CloneSkill clone { get; private set; }
     public SpaceDoorSkill spaceDoor { get; private set; }
 
@@ -31,7 +31,7 @@ public class SkillManager : MonoBehaviour, ISavingManager
 
     private void Start()
     {
-        dush=GetComponent<DashSkill>();
+        dash=GetComponent<DashSkill>();
         clone=GetComponent<CloneSkill>();
         spaceDoor=GetComponent<SpaceDoorSkill>();
     }
