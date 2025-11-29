@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour, ISavingManager
     public bool key1 = false;
     public bool key2 = false;
     public bool key3 = false;
+    public List<bool> keyList = new List<bool>();
     private float unmoveableTimer = 0;
     
     private void Awake()
@@ -20,10 +21,7 @@ public class PlayerManager : MonoBehaviour, ISavingManager
         {
             Destroy(instance.gameObject);
         }
-        else
-        {
-            instance = this;
-        }
+        instance = this;
     }
 
     private void Update()

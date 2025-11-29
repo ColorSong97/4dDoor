@@ -29,7 +29,7 @@ public class SceneManager : MonoBehaviour, ISavingManager
     public void myStartScene()
     {
         // if (currentScene == 0)
-            currentScene = 3;
+            currentScene = 7;
         UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
         AudioManager.Instance.PlaySfx(AudioManager.Instance.buttonClickSfx);
     }

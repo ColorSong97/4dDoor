@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7329f403c2b30042ad0a35fcf78612c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 2
+  cooldown: 1
 --- !u!114 &7919697190788042316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bfcb4db9fa547e4cac1b7e0ce88c610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 5
+  cooldown: 2
   spaceDoorPrefab: {fileID: 2797942840269346227, guid: 719743a980084a0498a3e7828e7a97ec, type: 3}
   doorDistance: 7.4
   whatIsGround:

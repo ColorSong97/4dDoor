@@ -19,14 +19,12 @@ public class SkillManager : MonoBehaviour, ISavingManager
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if (instance != null)
         {
             Destroy(instance.gameObject);
         }
-        else
-        {
-            instance = this;
-        }
+        instance = this;
     }
 
     private void Start()

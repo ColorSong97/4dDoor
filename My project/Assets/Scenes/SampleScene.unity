@@ -459,8 +459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a479b2b2a92d804cbcc00408313685a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextRoom: 2
-  transportPosition: {x: -6, y: -8}
+  nextRoom: 7
+  transportPosition: {x: -24, y: 16}
 --- !u!61 &393740142
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -858,7 +858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a479b2b2a92d804cbcc00408313685a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextRoom: 3
+  nextRoom: 7
   transportPosition: {x: -24, y: 16}
 --- !u!61 &499206224
 BoxCollider2D:
@@ -3031,6 +3031,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1129074985}
   currency: 0
+  key1: 0
+  key2: 0
+  key3: 0
+  keyList: 
 --- !u!4 &1830287146
 Transform:
   m_ObjectHideFlags: 0
