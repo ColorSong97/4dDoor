@@ -9,7 +9,18 @@ public class UnLockDash : MonoBehaviour
         if (collision.gameObject.tag=="Player")
         {
             SkillManager.instance.UnLockDush();
-            Destroy(gameObject);
+        }
+    }
+
+    public void Update()
+    {
+        if (SkillManager.instance.canDash)
+        {
+            transform.localScale = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }

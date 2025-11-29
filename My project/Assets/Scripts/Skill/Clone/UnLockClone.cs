@@ -8,8 +8,19 @@ public class UnLockClone : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            SkillManager.instance.UnLockClone();
-            Destroy(gameObject);
+            SkillManager.instance.UnLockClone()
+        }
+    }
+
+    public void Update()
+    {
+        if (SkillManager.instance.canClone)
+        {
+            transform.localScale = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }

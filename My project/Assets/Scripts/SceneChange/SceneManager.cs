@@ -13,15 +13,12 @@ public class SceneManager : MonoBehaviour, ISavingManager
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if (instance != null)
         {
-            Destroy(instance.gameObject);
+            Destroy(instance.gameObject);   // if an instance already exit, then destroy it
         }
-        else
-        {
-            instance = this;
-        }
-        DontDestroyOnLoad(gameObject);
+        instance = this;
     }
 
     public void Update()
@@ -43,16 +40,6 @@ public class SceneManager : MonoBehaviour, ISavingManager
 
     public void myLoadScene(int levelIndex, Vector2 position)
     {
-        if (levelIndex == currentScene)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(levelIndex);
-            AudioManager.Instance.PlaySfx(AudioManager.Instance.buttonClickSfx);
-            PlayerManager.instance.player.transform.position = new Vector3(position.x, position.y, 0);
-            PlayerManager.instance.setUnmoveableTimer(0.5f);
-            PlayerManager.instance.player.stateMachine.ChangeState(PlayerManager.instance.player.changeSceneState);
-            PlayerManager.instance.currency = 0;
-            return;
-        }
         StartCoroutine(LoadSceneCoroutine(levelIndex, position));
     }
 
@@ -75,13 +62,19 @@ public class SceneManager : MonoBehaviour, ISavingManager
         // now can safely set the player
         PlayerManager.instance.player.transform.position = new Vector3(position.x, position.y, 0);
         PlayerManager.instance.setUnmoveableTimer(0.5f);
-    
-        // set player's state due to grounded state
         PlayerManager.instance.player.stateMachine.ChangeState(PlayerManager.instance.player.changeSceneState);
         PlayerManager.instance.currency = 0;
     
         // change current scene index
         currentScene = levelIndex;
+    }
+
+    public void myRestartScene(Vector2 position)
+    {
+        PlayerManager.instance.player.transform.position = new Vector3(position.x, position.y, 0);
+        PlayerManager.instance.setUnmoveableTimer(0.5f);
+        PlayerManager.instance.player.stateMachine.ChangeState(PlayerManager.instance.player.changeSceneState);
+        PlayerManager.instance.currency = 0;
     }
 
     public void myDeleteData()

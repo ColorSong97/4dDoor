@@ -26,9 +26,13 @@ public class KeyReward : MonoBehaviour
     private void Update()
     {
         if (PlayerManager.instance.currency == 1)
-            Destroy(gameObject);
-        
+        {
+            angle = math.PI / 2;
+        }
+        else
+        {
+            angle += math.PI * Time.deltaTime / 2f;
+        }
         transform.localScale = new Vector3(10 * math.cos(angle), transform.localScale.y, transform.localScale.z);
-        angle += math.PI * Time.deltaTime / 2f;
     }
 }

@@ -10,7 +10,7 @@ public class SpineTrap : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            SceneManager.instance.myLoadScene(currentScene, position);
+            SceneManager.instance.myRestartScene(position);
         }
     }
 }
