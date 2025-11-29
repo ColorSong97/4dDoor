@@ -28,7 +28,7 @@ public class SceneManager : MonoBehaviour, ISavingManager
 
     public void myStartScene()
     {
-        if (currentScene == 0)
+        // if (currentScene == 0)
             currentScene = 3;
         UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
         AudioManager.Instance.PlaySfx(AudioManager.Instance.buttonClickSfx);
@@ -101,7 +101,8 @@ public class SceneManager : MonoBehaviour, ISavingManager
     public void SaveData(ref GameData _data)
     {
         // _data.inventory.Clear();
-        
+
+        currentScene = 2;
         _data.inventory.Add("CurrentScene", currentScene);
     }
 }

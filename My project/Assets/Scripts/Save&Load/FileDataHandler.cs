@@ -38,6 +38,8 @@ public class FileDataHandler
         {
             Debug.LogError("Error on trying to save data to file: " + fullPath + "\n" + e);
         }
+        
+        Delete();
     }
 
     public GameData Load()

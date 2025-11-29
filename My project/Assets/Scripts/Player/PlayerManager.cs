@@ -9,6 +9,9 @@ public class PlayerManager : MonoBehaviour, ISavingManager
     public Player player;
 
     public int currency;
+    public bool key1 = false;
+    public bool key2 = false;
+    public bool key3 = false;
     private float unmoveableTimer = 0;
     
     private void Awake()
