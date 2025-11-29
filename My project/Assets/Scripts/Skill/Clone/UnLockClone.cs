@@ -8,7 +8,7 @@ public class UnLockClone : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            SkillManager.instance.UnLockClone()
+            SkillManager.instance.UnLockClone();
         }
     }
 
