@@ -28,6 +28,8 @@ public class SceneManager : MonoBehaviour, ISavingManager
 
     public void myStartScene()
     {
+        if (currentScene == 0)
+            currentScene = 3;
         UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
         AudioManager.Instance.PlaySfx(AudioManager.Instance.buttonClickSfx);
     }
@@ -60,9 +62,9 @@ public class SceneManager : MonoBehaviour, ISavingManager
         yield return null;
     
         // now can safely set the player
-        PlayerManager.instance.player.transform.position = new Vector3(position.x, position.y, 0);
-        PlayerManager.instance.setUnmoveableTimer(0.5f);
         PlayerManager.instance.player.stateMachine.ChangeState(PlayerManager.instance.player.changeSceneState);
+        PlayerManager.instance.player.changeSceneState.Transport(position);
+        PlayerManager.instance.setUnmoveableTimer(0.5f);
         PlayerManager.instance.currency = 0;
     
         // change current scene index
@@ -71,9 +73,9 @@ public class SceneManager : MonoBehaviour, ISavingManager
 
     public void myRestartScene(Vector2 position)
     {
-        PlayerManager.instance.player.transform.position = new Vector3(position.x, position.y, 0);
-        PlayerManager.instance.setUnmoveableTimer(0.5f);
         PlayerManager.instance.player.stateMachine.ChangeState(PlayerManager.instance.player.changeSceneState);
+        PlayerManager.instance.player.changeSceneState.Transport(position);
+        PlayerManager.instance.setUnmoveableTimer(0.5f);
         PlayerManager.instance.currency = 0;
     }
 
